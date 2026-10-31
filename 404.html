@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Page not found | SWK Studios</title>
   <meta name="description" content="This page does not exist. Go back to the SWK Studios home page.">
   <meta name="robots" content="noindex">
@@ -21,8 +22,7 @@
   <header class="site-header">
     <nav class="nav wrap" aria-label="Primary">
       <a class="brand" href="/">
-        <svg class="brand-mark" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8" fill="none" stroke="#A9B8D0" stroke-width="1.5"/><circle cx="11" cy="11" r="3" fill="#2DD4BF"/></svg>
-        <span class="brand-name">SWK Studios</span>
+        <img class="brand-logo" src="/assets/brand/swk-logo-light.svg" width="88" height="32" alt="SWK Studios">
       </a>
       <a class="btn btn--secondary btn--sm nav-cta" href="/#contact">Contact</a>
     </nav>
@@ -35,7 +35,7 @@
         <p class="lead muted">The page you asked for does not exist or has moved. Everything we do is on the home page.</p>
         <div class="cta-row">
           <a class="btn btn--primary" href="/">Go to the home page</a>
-          <a class="btn btn--secondary" href="mailto:admin@swkstudios.com">Email us</a>
+          <a class="btn btn--secondary" href="https://www.linkedin.com/company/swkstudios">Message us on LinkedIn</a>
         </div>
       </div>
     </section>
@@ -44,7 +44,7 @@
   <footer class="band band--dark site-footer">
     <div class="wrap">
       <div class="footer-legal">
-        <p>© 2026 SWK Studios LLC. All rights reserved.</p>
+        <p>© <span data-stat="year">2026</span> SWK Studios LLC. All rights reserved.</p>
       </div>
     </div>
   </footer>

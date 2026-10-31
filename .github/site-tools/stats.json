@@ -1,0 +1,10 @@
+{
+  "_source": "Values for data-stat elements. Refreshed automatically at Pages build by scripts/fetch_stats.py from the latest swkstudios/unifi-fabric-mcp-server release (docs/site-stats.json in the release tag + Releases API). Year is set from the build date.",
+  "tools": "283",
+  "live_verified": "124",
+  "unit_tested": "159",
+  "releases": "6",
+  "latest_version": "v0.6.2",
+  "latest_date": "August 2026",
+  "year": "2026"
+}

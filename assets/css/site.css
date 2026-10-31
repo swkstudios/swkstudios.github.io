@@ -225,7 +225,10 @@ main:focus { outline: none; }
 }
 @media (max-width: 399.98px) { .nav { gap: var(--s3); } }
 @media (max-width: 359.98px) { .nav { gap: var(--s2); } }
-.brand-mark { flex: none; }
+.brand-logo { display: block; flex: none; width: auto; height: 2rem; }
+.brand-logo--footer, .brand-logo--print { height: 2.5rem; }
+.brand-logo--print { display: none; }
+@media (min-width: 768px) { .nav .brand-logo { height: 2.25rem; } }
 .nav-links { display: none; margin-left: auto; gap: var(--s2); }
 .nav-link {
   position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s3);
@@ -377,14 +380,12 @@ main:focus { outline: none; }
 /* Building */
 .building-grid { row-gap: var(--s7); align-items: start; }
 @media (min-width: 1024px) {
-  .teaser { grid-column: 1 / span 5; }
+  .teaser { grid-column: 1 / span 5; align-self: center; padding-right: var(--s6); }
   .oss-card { grid-column: 6 / span 7; }
 }
 .teaser h3 { margin-top: var(--s5); }
 .teaser p { margin-top: var(--s3); }
-.teaser .strong-white { color: var(--white); }
-.teaser .teaser-cta { margin-top: var(--s5); text-wrap: balance; }
-.teaser-cta .link { display: inline-block; }
+.teaser .strong-white { margin-top: var(--s5); padding-top: var(--s4); border-top: 1px solid var(--line-dark); color: var(--white); }
 .oss-card {
   background: var(--navy-800); border-radius: var(--r-xl); padding: 2.5rem;
   border: 1px solid var(--line-dark); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
@@ -461,9 +462,7 @@ main:focus { outline: none; }
   .contact-text { grid-column: 1 / span 7; }
   .contact-actions { grid-column: 9 / span 4; justify-self: end; }
 }
-.contact-address { margin-top: var(--s3); user-select: all; -webkit-user-select: all; }
-.contact-investor { margin-top: var(--s5); margin-bottom: var(--s3); }
-.contact-social { margin-top: var(--s4); }
+.contact-investor { margin-top: var(--s4); }
 
 /* Footer */
 .site-footer { background: var(--navy-950); border-top: 1px solid var(--line-dark); padding: var(--s8) 0 var(--s6); }
@@ -514,6 +513,8 @@ main:focus { outline: none; }
   .oss-card .btn { display: block; width: fit-content; margin-top: 1.25rem; }
   .dot-list li::before { background: none; border: 1.5px solid #000; }
   .brand { color: #000 !important; }
+  .brand-logo--footer { display: none; }
+  .brand-logo--print { display: block; }
   .footer-row { display: block; }
   .footer-links { flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-top: 0.75rem; }
   .footer-links .link { display: inline; min-height: 0; }
