@@ -1,0 +1,30 @@
+{
+  "name": "SWK Studios",
+  "short_name": "SWK Studios",
+  "description": "Consulting for networking, wireless, automation and AI.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#07142B",
+  "theme_color": "#07142B",
+  "icons": [
+    {
+      "src": "/assets/brand/icon-192.png?v=2",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/brand/icon-512.png?v=2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/brand/icon-maskable-512.png?v=2",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
