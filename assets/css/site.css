@@ -150,6 +150,9 @@ main:focus { outline: none; }
 .band--mist { background: var(--mist-50); }
 .band--navy900 { background: var(--navy-900); }
 .band--navy950 { background: var(--navy-950); }
+/* Two dark bands in a row (Building, Proof): the 1.09:1 tone step alone is too faint on
+   uncalibrated panels, so add the same hairline the footer uses. */
+.band--dark + .band--dark { border-top: 1px solid var(--line-dark); }
 
 .sec-head { display: grid; gap: var(--s4); margin-bottom: var(--head-gap); }
 
@@ -255,6 +258,8 @@ main:focus { outline: none; }
 .hero-grid { align-items: center; row-gap: var(--s8); }
 .hero-sub { margin-top: var(--s5); color: var(--muted); }
 .cta-row { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s6); }
+.hero-proof { margin-top: var(--s5); color: var(--muted); }
+.hero-proof + .hero-investor { margin-top: var(--s2); }
 .hero-investor { margin-top: var(--s4); color: var(--muted); }
 .hero-visual { position: relative; width: 100%; max-width: 36rem; justify-self: center; }
 .hero-visual::before {
@@ -416,7 +421,7 @@ main:focus { outline: none; }
 .stats { display: grid; grid-template-columns: 1fr; }
 .stat { display: grid; grid-template-columns: 7rem 1fr; align-items: baseline; gap: var(--s4); padding-block: var(--s5); border-top: 1px solid var(--line-dark); }
 .stat:first-child { border-top: 0; padding-top: 0; }
-.stat-fig { font-size: var(--fs-stat); line-height: 1; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--white); }
+.stat-fig { font-size: var(--fs-stat); line-height: 1; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: proportional-nums; color: var(--white); }
 .stat-label { font-size: var(--fs-small); line-height: 1.55; color: var(--muted); max-width: 28ch; }
 @media (min-width: 640px) {
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -490,7 +495,7 @@ main:focus { outline: none; }
     background: #fff !important; color: #000 !important; box-shadow: none !important;
   }
   .band--dark, .band--light, .site-header { --muted: #333; --link: #000; }
-  .muted, .stat-label, .footer-legal, .overline, .hero-sub, .hero-investor { color: #333 !important; }
+  .muted, .stat-label, .footer-legal, .overline, .hero-sub, .hero-investor, .hero-proof { color: #333 !important; }
   h1, h2, h3, .stat-fig, .teaser .strong-white, .why-now .lead { color: #000 !important; }
   .site-header, .skip-link, .hero-visual, .core-glyph, .btn-icon { display: none !important; }
   .band { padding-block: 0 1.5rem; }
@@ -500,19 +505,24 @@ main:focus { outline: none; }
   .sec-head { margin-bottom: 1rem; }
   .card, .oss-card, .why-now { border: 1px solid #ccc; padding: 1rem; }
   .pillars-grid { gap: 0.75rem; }
+  .card .icon-tile { width: 32px; height: 32px; }
+  .card h3 { margin-top: 0.75rem; }
+  .card .ring-list { margin-top: 0.75rem; }
   .card, .stat, .who-row, .why-item, .oss-card, .why-now { break-inside: avoid; }
-  h2, h3 { break-after: avoid; }
+  h2, h3, .sec-head, .who-head { break-after: avoid; page-break-after: avoid; }
   .btn { display: inline; height: auto; min-height: 0; padding: 0; border: 0; background: none !important; color: #000 !important; text-decoration: underline; }
+  .oss-card .btn { display: block; width: fit-content; margin-top: 1.25rem; }
+  .dot-list li::before { background: none; border: 1.5px solid #000; }
   .brand { color: #000 !important; }
   .footer-row { display: block; }
   .footer-links { flex-wrap: wrap; gap: 0.25rem 1.5rem; margin-top: 0.75rem; }
   .footer-links .link { display: inline; min-height: 0; }
   .contact-actions { max-width: none; }
   .stat, .stat:nth-child(n) { border-color: #ccc; }
-  a[href^="http"]::after, a[href^="mailto"]::after {
+  a[href^="http"]::after {
     content: " (" attr(href) ")"; position: static; transform: none; width: auto; height: auto; min-width: 0;
     font-size: 0.85em; color: #333; word-break: break-all;
   }
-  .btn--sm::after, .proof-source a::after { content: none; }
+  .btn--sm::after, .proof-source a::after, a[href^="mailto"]::after { content: none; }
   .topo, .topo * { animation: none !important; }
 }

@@ -1,24 +1,42 @@
 // Two jobs only: mark the nav link for the section in view, and pause the map off-screen.
 (function () {
   "use strict";
-  if (!("IntersectionObserver" in window)) return;
 
+  // Active section = the last section whose top has crossed a fixed line 40% down the
+  // viewport. Position-based, so it switches at the same point scrolling down or up.
+  // A section without its own link (data-nav) keeps the highlight of the one it names.
   var links = document.querySelectorAll(".nav-link");
   var byId = {};
   links.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+  var sections = Array.prototype.slice.call(document.querySelectorAll("main > section[id]"));
+  var current = null;
+  var queued = false;
 
-  var navObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      links.forEach(function (a) { a.removeAttribute("aria-current"); });
-      var link = byId[e.target.id];
-      if (link) link.setAttribute("aria-current", "location");
-    });
-  }, { rootMargin: "-40% 0px -55% 0px" });
-  document.querySelectorAll("main > section[id]").forEach(function (s) { navObserver.observe(s); });
+  function update() {
+    queued = false;
+    var line = window.innerHeight * 0.4;
+    var active = null;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].getBoundingClientRect().top <= line) active = sections[i];
+      else break;
+    }
+    var link = active ? byId[active.getAttribute("data-nav") || active.id] || null : null;
+    if (link === current) return;
+    if (current) current.removeAttribute("aria-current");
+    if (link) link.setAttribute("aria-current", "location");
+    current = link;
+  }
+  function queue() {
+    if (!queued) { queued = true; window.requestAnimationFrame(update); }
+  }
+  if (links.length && sections.length) {
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    update();
+  }
 
   var topo = document.querySelector(".topo");
-  if (topo) {
+  if (topo && "IntersectionObserver" in window) {
     new IntersectionObserver(function (entries) {
       topo.classList.toggle("topo--paused", !entries[0].isIntersecting);
     }).observe(topo);
