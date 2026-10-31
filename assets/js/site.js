@@ -32,6 +32,8 @@
   if (links.length && sections.length) {
     window.addEventListener("scroll", queue, { passive: true });
     window.addEventListener("resize", queue);
+    window.addEventListener("load", queue);
+    window.addEventListener("hashchange", queue);
     update();
   }
 
